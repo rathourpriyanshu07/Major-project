@@ -1,4 +1,4 @@
-{% extends 'header.html' %}
+{% extends 'seller-header.html' %}
 {% load static  %}
 {% block content %}
 <!DOCTYPE html>
@@ -17,12 +17,12 @@
             class="banner_content d-md-flex justify-content-between align-items-center"
           >
             <div class="mb-3 mb-md-0">
-              <h2>User Sign Up</h2>
+              <h2>User Profile</h2>
             
             </div>
             <div class="page_link">
               <a href="/">Home</a>
-              <a href="#">Sign Up</a>
+              <a href="#">Profile</a>
             </div>
           </div>
         </div>
@@ -35,48 +35,39 @@
     <div class="container">
      <div class="row">
         <div class="col-12">
-          <h2 class="contact-title">User Sign Up</h2>
+          <h2 class="contact-title">User Profile</h2>
         </div>
         <div class="col-lg-8 mb-4 mb-lg-0">
           {% if msg %}
           <b style="color: blue;">{{msg}}</b>
           {% endif %}
-          <form class="form-contact contact_form" action="{% url 'signup' %}" method="post" id="contactForm" enctype="multipart/form-data">
+          <form class="form-contact contact_form" action="{% url 'profile' %}" method="post" id="contactForm" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <select class="form-control" name="usertype" id="name">
-                    <option>---Select User Type---</option>
-                    <option value="buyer">Buyer</option>
-                    <option value="seller">Seller</option>
-                  </select>
-                </div>
-              </div>
                 <div class="col-sm-6">
                 <div class="form-group">
-                  <input class="form-control" name="fname" id="name" type="text" placeholder="Enter your first name">
+                  <input class="form-control" name="fname" id="name" type="text" value="{{user.fname}}">
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <input class="form-control" name="lname" id="name" type="text" placeholder="Enter your last name">
+                  <input class="form-control" name="lname" id="name" type="text" value="{{user.lname}}">
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
-                    <textarea class="form-control w-100" name="address" id="message" cols="30" rows="9" placeholder="Enter Address"></textarea>
+                    <textarea class="form-control w-100" name="address" id="message" cols="30" rows="9">{{user.address}}</textarea>
                 </div>
               </div>
               
               <div class="col-sm-12">
                 <div class="form-group">
-                  <input class="form-control" name="email" id="email" type="email" placeholder="Enter email address">
+                  <input class="form-control" name="email" id="email" type="email" value="{{user.email}}" readonly>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <input class="form-control" name="mobile" id="subject" type="text" placeholder="Enter mobile">
+                  <input class="form-control" name="mobile" id="subject" type="text" value="{{user.mobile}}">
                 </div>
               </div>
               <div class="col-12">
@@ -86,17 +77,13 @@
               </div>
               <div class="col-12">
                 <div class="form-group">
-                  <input class="form-control" name="password" id="subject" type="password" placeholder="Enter password">
+                  <img src="{{user.profile_picture.url}}" style="width: 100px;height: 100px;border-radius: 50%;">
                 </div>
               </div>
-              <div class="col-12">
-                <div class="form-group">
-                  <input class="form-control" name="cpassword" id="subject" type="password" placeholder="Enter confirm password">
-                </div>
-              </div>
+              
             </div>
             <div class="form-group mt-lg-3">
-              <button type="submit" class="main_btn">Sign Up</button>
+              <button type="submit" class="main_btn">Update Profile</button>
             </div>
           </form>
 
