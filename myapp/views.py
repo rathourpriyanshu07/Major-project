@@ -182,7 +182,7 @@ def forgot_password(request):
             context = {}
             address = request.POST['email']
             subject = "OTP For Forgot Password"
-            message = "Your OTP For Forgot Password Is"+str(otp)
+            message = "Your OTP For Forgot Password Is "+str(otp)
 
             if address and subject and message:
                 try:
